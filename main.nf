@@ -7,10 +7,12 @@ include { SNIFFLES } from './modules/sv'
 
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
 ref_ch = channl.fromPath(params.ref,checkIfExists: true)
+tr_ch = channl.fromPath(params.tandem ,checkIfExists: true)
 
 log.info """\
-  bam ${params.bam}
-  ref ${params.ref}
+  bam:   ${params.bam}
+  ref:   ${params.ref}
+  tr:    ${params.tr} 
 """.stripIndent()
 
 workflow {
