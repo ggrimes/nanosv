@@ -10,5 +10,5 @@ A nextflow pipeline for somatic sv calling using ONT data from bam files
 
 
 ~~~
-nextflow run ggrimes/nanosv --bam --tr --reference
+nextflow run ggrimes/nanosv --bam --tr --ref reference.fa
 ~~~
