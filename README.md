@@ -9,3 +9,6 @@ A nextflow pipeline for somatic sv calling using ONT data from bam files
 * visualisation samplots
 
 
+~~~
+nextflow run ggrimes/nanosv --bam --tr --reference
+~~~
