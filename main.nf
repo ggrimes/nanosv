@@ -5,7 +5,7 @@ params.tr = "tandem.bed"
 params.outdir = "results_nanosv"
 
 include { SNIFFLES } from './modules/sv'
-include {MOSDEPTH} from './modules/common.nf'
+include {MOSDEPTH} from './modules/mosdepth.nf'
 
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
 ref_ch = channel.fromPath(params.ref,checkIfExists: true)
