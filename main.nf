@@ -21,6 +21,7 @@ log.info """\
 workflow {
 
  MOSDEPTH(bam_ch)
- //SNIFFLES(bam_ch,ref_ch,tr_ch)
+ //variant calling
+ SNIFFLES(bam_ch,ref_ch,tr_ch)
 
 }
