@@ -14,11 +14,10 @@ process SNIFFLES {
     script:
     """
     sniffles \
-        --threads $task.cpus \
+        --threads ${task.cpus} \
         --sample-id ${sample_name} \
         --reference ${reference} \
         --output-rnames \
-        --cluster-merge-pos $params.cluster_merge_pos \
         --input ${bam[0]} \
         --tandem-repeats ${tr} \
         --symbolic \
