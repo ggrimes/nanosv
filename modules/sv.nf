@@ -25,3 +25,24 @@ process SNIFFLES {
         --vcf ${sample_name}.sniffles.vcf
     """
 }
+
+process ANNOTSV {
+   publishDir "${params.outdir}/annotsv", mode:copy
+   input:
+        path vcf
+        
+   output:
+   path "${sample_name}"
+
+   script:
+   """
+      export ANNOTSV=./AnnotSV
+    ./AnnotSV/bin/AnnotSV \
+    -SVinputFile ${vcf} \
+    -bedtools `which bedtools` \
+    -genomeBuild GRCh38 \
+    -outputDir ${sample_name}>& ${sample_name}.log
+    """
+
+
+}
