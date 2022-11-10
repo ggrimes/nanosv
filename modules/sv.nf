@@ -14,16 +14,16 @@ process sniffles2 {
         def sniffles_args = params.sniffles_args ?: ''
         def ref_path = "${ref_cache}/%2s/%2s/%s:" + System.getenv("REF_PATH")
     """
-    export REF_PATH=${ref_path}
+    sniffles --input ${bam} --vcf output.vcf --non-germline
     sniffles \
         --threads $task.cpus \
         --sample-id ${params.sample_name} \
+        --reference ${reference \}
         --output-rnames \
         --cluster-merge-pos $params.cluster_merge_pos \
         --input $bam \
-        $tr_arg \
-        $sniffles_args \
+        --tandem-repeats {tandem-repeats}\
+        --non-germline \
         --vcf ${params.sample_name}.sniffles.vcf
-    sed -i '/.:0:0:0:NULL/d' ${params.sample_name}.sniffles.vcf
     """
 }
