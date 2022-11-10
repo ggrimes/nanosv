@@ -20,7 +20,7 @@ process SNIFFLES {
         --output-rnames \
         --cluster-merge-pos $params.cluster_merge_pos \
         --input ${bam[0]} \
-        --tandem-repeats {tr} \
+        --tandem-repeats ${tr} \
         --symbolic \
         --non-germline \
         --vcf ${sample_name}.sniffles.vcf
