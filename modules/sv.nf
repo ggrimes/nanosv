@@ -1,7 +1,7 @@
 
 // NOTE VCF entries for alleles with no support are removed to prevent them from
 //      breaking downstream parsers that do not expect them
-process sniffles2 {
+process SNIFFLES {
     label "wf_human_sv"
     cpus params.threads
     input:
