@@ -16,7 +16,7 @@ process SNIFFLES {
     sniffles \
         --threads $task.cpus \
         --sample-id ${sample_name} \
-        --reference ${reference \}
+        --reference ${reference} \
         --output-rnames \
         --cluster-merge-pos $params.cluster_merge_pos \
         --input ${bam[0]} \
