@@ -6,8 +6,8 @@ params.tandem = "tandem.bed"
 include { SNIFFLES } from './modules/sv'
 
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
-ref_ch = channl.fromPath(params.ref,checkIfExists: true)
-tr_ch = channl.fromPath(params.tandem ,checkIfExists: true)
+ref_ch = channel.fromPath(params.ref,checkIfExists: true)
+tr_ch = channel.fromPath(params.tandem ,checkIfExists: true)
 
 log.info """\
   bam:   ${params.bam}
