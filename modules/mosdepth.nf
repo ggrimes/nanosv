@@ -8,9 +8,9 @@ process MOSDEPTH {
         tuple val(sample_name), path(bam)
     output:
         tuple \
-            path("${params.sample_name}.regions.bed.gz"),
-            path("${params.sample_name}.mosdepth.global.dist.txt"),
-            path("${params.sample_name}.thresholds.bed.gz")
+            path("${sample_name}.regions.bed.gz"),
+            path("${sample_name}.mosdepth.global.dist.txt"),
+            path("${sample_name}.thresholds.bed.gz")
     script:
         """
         export MOSDEPTH_PRECISION=2 
