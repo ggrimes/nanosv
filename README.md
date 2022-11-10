@@ -10,5 +10,5 @@ A nextflow pipeline for somatic sv calling using ONT data from bam files
 
 
 ~~~
-nextflow run ggrimes/nanosv --bam --tr --ref reference.fa
+nextflow run ggrimes/nanosv --bam nanoseq_results/minimap2/ --tr resources/human_GRCh38_no_alt_analysis_set.trf.bed --ref reference.fa
 ~~~
