@@ -13,7 +13,7 @@ process MOSDEPTH {
             path("${params.sample_name}.thresholds.bed.gz")
     script:
         """
-        export MOSDEPTH_PRECISION=2 \
+        export MOSDEPTH_PRECISION=2 
         mosdepth \
         -x \
         -t $task.cpus \
