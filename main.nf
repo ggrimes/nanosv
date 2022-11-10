@@ -4,7 +4,7 @@ params.ref = "reference.fa"
 
 include { SNIFFLES } from './modules/sv'
 
-bam_ch = channel.fromFilePairs(,checkIfExists: true)
+bam_ch = channel.fromFilePairs(params.bam,checkIfExists: true)
 ref_ch = channl.fromPath(,checkIfExists: true)
 
 log.info """\
