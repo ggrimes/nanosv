@@ -13,9 +13,11 @@ process MOSDEPTH {
             path("${params.sample_name}.thresholds.bed.gz")
     script:
         """
+        export MOSDEPTH_PRECISION=2 \
         mosdepth \
         -x \
         -t $task.cpus \
+        --by 500 \
         --thresholds 1,10,20,30,50,60,70,80,90,100 \
         --no-per-base \
         ${sample_name} \
