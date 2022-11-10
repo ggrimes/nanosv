@@ -18,7 +18,7 @@ process MOSDEPTH {
         -t $task.cpus \
         --thresholds 1,10,20,30,50,60,70,80,90,100 \
         --no-per-base \
-        ${params.sample_name} \
+        ${sample_name} \
         ${bam}
         """
 }
