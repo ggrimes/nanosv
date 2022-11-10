@@ -12,6 +12,7 @@ process MOSDEPTH {
             path("${params.sample_name}.mosdepth.global.dist.txt"),
             path("${params.sample_name}.thresholds.bed.gz")
     script:
+        """
         mosdepth \
         -x \
         -t $task.cpus \
