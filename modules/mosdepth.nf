@@ -19,6 +19,6 @@ process MOSDEPTH {
         --thresholds 1,10,20,30,50,60,70,80,90,100 \
         --no-per-base \
         ${sample_name} \
-        ${bam}
+        ${bam[0]}
         """
 }
