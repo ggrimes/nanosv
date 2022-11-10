@@ -4,6 +4,7 @@
 process SNIFFLES {
     label "wf_human_sv"
     cpus params.threads
+    container "https://depot.galaxyproject.org/singularity/sniffles:2.0.7--pyhdfd78af_0"
     input:
         tuple path(bam), path(bam_index)
         tuple path(reference), path(ref_idx), path(ref_cache)
