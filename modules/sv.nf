@@ -21,6 +21,7 @@ process SNIFFLES {
         --cluster-merge-pos $params.cluster_merge_pos \
         --input ${bam[0]} \
         --tandem-repeats {tr} \
+        --symbolic \
         --non-germline \
         --vcf ${sample_name}.sniffles.vcf
     """
