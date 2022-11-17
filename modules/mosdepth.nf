@@ -3,6 +3,7 @@
 process MOSDEPTH {
     publishDir "${params.outdir}/mosdepth", mode:"copy"
     cpus 2
+    memory 10.GB
     container "https://depot.galaxyproject.org/singularity/mosdepth:0.3.3--hdfd78af_1"
     input:
         tuple val(sample_name), path(bam)

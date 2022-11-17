@@ -3,7 +3,8 @@
 //      breaking downstream parsers that do not expect them
 process SNIFFLES {
     label "wf_human_sv"
-    cpus params.threads
+    cpus 12
+    memory 32.GB
     publishDir "${params.outdir}/sniffles-somatic", mode:"copy"
     container "https://depot.galaxyproject.org/singularity/sniffles:2.0.7--pyhdfd78af_0"
     input:
