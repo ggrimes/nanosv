@@ -4,7 +4,7 @@
 process SNIFFLES {
     label "wf_human_sv"
     cpus params.threads
-    publishDir "${params.outdir}/mosdepth", mode:"copy"
+    publishDir "${params.outdir}/sniffles-somatic", mode:"copy"
     container "https://depot.galaxyproject.org/singularity/sniffles:2.0.7--pyhdfd78af_0"
     input:
         tuple val(sample_name), path(bam)
