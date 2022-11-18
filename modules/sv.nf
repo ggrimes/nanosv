@@ -55,7 +55,7 @@ process FILTER_SNPS {
 process ANNOTSV {
    publishDir "${params.outdir}/annotsv", mode:copy
    container "docker://ggrimes/annotsv:3.1.1"
-   cpus: 6
+   cpus 6
    memory: 32.GB
    input:
     path VCF
