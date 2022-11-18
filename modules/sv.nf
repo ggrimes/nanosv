@@ -94,4 +94,4 @@ process FILTER_SV {
     bctools view -i 'FILTER=="PASS"' ${VCF} ${VCF.getSimpleName()}.pass.vcf
     """
     
-}
+} 
