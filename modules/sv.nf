@@ -59,6 +59,7 @@ process ANNOTSV {
    memory 32.GB
    input:
     path VCF
+    path ANNOTDIR
         
    output:
     path "${sample_name}"
@@ -70,7 +71,7 @@ process ANNOTSV {
     -SVinputFile ${vcf} \
     -bedtools `which bedtools` \
     -genomeBuild GRCh38 \
-    -annotationsDir ${params.annotDir}
+    -annotationsDir ${ANNOTDIR}
     -outputDir ${sample_name}>& ${sample_name}.log
     """
 
