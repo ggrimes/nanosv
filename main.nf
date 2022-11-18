@@ -3,8 +3,9 @@ params.bam = "*.{bam,bam.bai}"
 params.ref = "reference.fa"
 params.tr = "tandem.bed"
 params.outdir = "results_nanosv"
+params.annotDir = "/exports/igmm/eddie/HGS-OvarianCancerA-SGP-WGS/ONT/software/AnnotSV/share/AnnotSV/"
 
-include { SNIFFLES } from './modules/sv'
+include { SNIFFLES,FILTER_SV } from './modules/sv'
 include {MOSDEPTH} from './modules/mosdepth.nf'
 
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
@@ -23,5 +24,9 @@ workflow {
  MOSDEPTH(bam_ch)
  //variant calling
  SNIFFLES(bam_ch,ref_ch,tr_ch)
+ //filter vcf
+ FILTER_SV(SNIFFLES.out)
+ //annotate vcf
+ ANNOTSV(FILTER_SV.out)
 
 }

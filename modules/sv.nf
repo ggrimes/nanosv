@@ -28,23 +28,70 @@ process SNIFFLES {
     """
 }
 
+
+process FILTER_SNPS {
+    
+    cpus 12
+    memory 32.GB
+    publishDir "${params.outdir}/sniffles-somatic/filtered", mode:"copy"
+    container "https://depot.galaxyproject.org/singularity/sniffles:2.0.7--pyhdfd78af_0"
+    
+    input:
+    path VCF
+    
+    output:
+    tuple val(sample_name),path("*${VCF}*")
+    
+    script:
+    sample_name = VCF..getSimpleName() 
+    """
+    bcftools view -i 'FILTER="PASS"' \
+    ${VCF} |\
+    bgzip -c >  ${VCF}.pass.vcf.gz
+    tabix -p vcf ${VCF}.pass.vcf.gz
+    """
+}
+
 process ANNOTSV {
    publishDir "${params.outdir}/annotsv", mode:copy
+   container "docker://ggrimes/annotsv:3.1.1"
+   cpus: 6
+   memory: 32.GB
    input:
-        path vcf
+    path VCF
         
    output:
-   path "${sample_name}"
+    path "${sample_name}"
 
    script:
    """
-      export ANNOTSV=./AnnotSV
-    ./AnnotSV/bin/AnnotSV \
+    export ANNOTSV=./AnnotSV
+    ./bin/AnnotSV \
     -SVinputFile ${vcf} \
     -bedtools `which bedtools` \
     -genomeBuild GRCh38 \
+    -annotationsDir ${params.annotDir}
     -outputDir ${sample_name}>& ${sample_name}.log
     """
 
 
+}
+
+/*
+* Filter VCF for those variants that pass
+*/
+process FILTER_SV {
+    publishDir "${params.outdir}/sniffles-somatic/filtered", mode:"copy"
+    cpus 2
+    memory 8.GB
+    container "https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1"
+    input:
+        path VCF
+    output:
+        path "*.vcf"    
+    script:
+    """
+    bctools view -i 'FILTER=="PASS"' ${VCF} ${VCF.getSimpleName()}.pass.vcf
+    """
+    
 }
