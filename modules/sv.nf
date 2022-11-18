@@ -71,7 +71,7 @@ process ANNOTSV {
     -SVinputFile ${VCF} \
     -bedtools `which bedtools` \
     -genomeBuild GRCh38 \
-    -outputDir ${VCF.getSimpleName()}>& ${VCF.getSimpleName()}.log
+    -outputDir ${VCF.getSimpleName()}>& ${VCF.getSimpleName()}.log \
     -annotationsDir ${ANNOTDIR}
     """
 
