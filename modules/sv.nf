@@ -65,8 +65,8 @@ process ANNOTSV {
 
    script:
    """
-    export ANNOTSV=./AnnotSV
-    ./bin/AnnotSV \
+    export ANNOTSV=/opt/AnnotSV
+    /opt/AnnotSV/bin/AnnotSV \
     -SVinputFile ${VCF} \
     -bedtools `which bedtools` \
     -genomeBuild GRCh38 \
