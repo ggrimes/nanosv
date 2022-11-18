@@ -11,6 +11,7 @@ include {MOSDEPTH} from './modules/mosdepth.nf'
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
 ref_ch = channel.fromPath(params.ref,checkIfExists: true)
 tr_ch = channel.fromPath(params.tr  ,checkIfExists: true)
+annotDir_ch = channel.fromPath(params.tr  ,checkIfExists: true)
 
 log.info """\
   bam:   ${params.bam}
@@ -27,6 +28,6 @@ workflow {
  //filter vcf
  FILTER_SV(SNIFFLES.out)
  //annotate vcf
- ANNOTSV(FILTER_SV.out)
+ ANNOTSV(FILTER_SV.out,annotDir_ch)
 
 }
