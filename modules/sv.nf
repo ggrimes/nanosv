@@ -91,7 +91,7 @@ process FILTER_SV {
         path "*.vcf"    
     script:
     """
-    bctools view -i 'FILTER=="PASS"' ${VCF} ${VCF.getSimpleName()}.pass.vcf
+    bcftools view -i 'FILTER=="PASS"' ${VCF} > ${VCF.getSimpleName()}.pass.vcf
     """
     
 } 
