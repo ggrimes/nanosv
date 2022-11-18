@@ -5,7 +5,7 @@ params.tr = "tandem.bed"
 params.outdir = "results_nanosv"
 params.annotDir = "/exports/igmm/eddie/HGS-OvarianCancerA-SGP-WGS/ONT/software/AnnotSV/share/AnnotSV/"
 
-include { SNIFFLES,FILTER_SV } from './modules/sv'
+include { SNIFFLES,FILTER_SV,ANNOTSV } from './modules/sv'
 include {MOSDEPTH} from './modules/mosdepth.nf'
 
 bam_ch = channel.fromFilePairs(params.bam,checkIfExists:true).view()
