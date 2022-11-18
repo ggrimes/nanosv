@@ -59,7 +59,7 @@ process ANNOTSV {
    memory 32.GB
    input:
     path VCF
-    each path ANNOTDIR
+    each  ANNOTDIR
         
    output:
     path "${sample_name}"
