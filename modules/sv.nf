@@ -67,11 +67,11 @@ process ANNOTSV {
    """
     export ANNOTSV=./AnnotSV
     ./bin/AnnotSV \
-    -SVinputFile ${vcf} \
+    -SVinputFile ${VCF} \
     -bedtools `which bedtools` \
     -genomeBuild GRCh38 \
     -annotationsDir ${params.annotDir}
-    -outputDir ${sample_name}>& ${sample_name}.log
+    -outputDir ${VCF.getSimpleName()}>& ${VCF.getSimpleName()}.log
     """
 
 
