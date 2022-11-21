@@ -59,7 +59,7 @@ process ANNOTSV {
    memory 32.GB
    input:
     path VCF
-    path  ANNOTDIR
+    each path(ANNOTDIR)
         
    output:
     path "${VCF.getSimpleName()}"
