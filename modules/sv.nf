@@ -21,6 +21,7 @@ process SNIFFLES {
         --reference ${reference} \
         --output-rnames \
         --input ${bam[0]} \
+        --minsupport ${params.sniffles_minsupport} \
         --tandem-repeats ${tr} \
         --symbolic \
         --non-germline \
